@@ -1,0 +1,81 @@
+@layer components {
+    #notification_wrapper{
+        display: none;
+    }
+    #notification_wrapper:popover-open{
+        position: fixed;
+
+        margin: 0 auto;
+
+        width: fit-content!important;
+        max-width: 1000px;
+        max-height: 40dvh;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap:0.5rem;
+        padding: 1rem;
+
+        border:none;
+        outline: none;
+        overflow: auto; 
+        scrollbar-width: none;
+        background-color: transparent;
+    }
+
+    .notification {
+        pointer-events: auto;
+        display: grid;
+        grid-template-columns: min-content auto min-content;
+        padding: 0rem;
+        border-radius: 0.5rem;
+        align-items: center;
+        align-content: center;
+        gap: 1rem;
+        color: var(--clr-neutral-900);
+        background-color: var(--bg-banner);
+        box-shadow: 0rem 0rem 0.5rem hsl(from var(--bg-banner) h s l / 0.5);
+        .notification_msg{
+            display:flex;
+            width:fit-content;
+            padding: 0.25em 0;
+            
+        }
+        .notification_icon{
+            display:grid;
+            align-self:center;
+            padding-left: 0.25rem;
+            svg{
+                fill: var(--text-color) !important;
+                stroke: var(--text-color) !important;
+            }
+        }
+        .notification_close{
+            height:100%;
+            width:2.25rem;
+            padding-right: 0.25rem;
+            cursor:pointer;
+            display:flex;
+            background-color: transparent;
+            border:none;
+            svg{height:1.5rem; width:100%;align-self:center;}
+        }
+
+        &[data-type="info"]{
+            --bg-banner: var(--clr-info-500);
+        }
+        
+        &[data-type="error"]{
+            --bg-banner: var(--clr-danger-500);
+        }
+
+        &[data-type="warning"]{
+            --bg-banner: var(--clr-warning-500);
+        }
+
+        &[data-type="success"]{
+            --bg-banner: var(--clr-success-500);
+        }
+    }
+}

@@ -1,0 +1,77 @@
+@import "../libs/wuefl-libs/css/import.css";
+
+/* Defaults */
+@import "./colors.css" layer(defaults);
+
+@layer custom {
+  :root {
+    --width-small: 800px;
+    --width-normal: 1000px;
+    --width-large: 1200px;
+    --width-full: 100%;
+
+    --font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    --text-size: var(--fs-300);
+    --text-color: var(--clr-neutral-900);
+    --text-hover: var(--clr-neutral-700);
+    --text-height: 1.6;
+
+    --bg-default: var(--clr-neutral-50);
+    --br-default: 1rem;
+
+    --clr-headings: var(--clr-primary-900);
+
+    --header-height: 4rem;
+    --header-nav-height: 0rem;
+    --bg-header: var(--clr-primary-600);
+    --bg-header-nav: var(--clr-primary-500);
+    --clr-header: var(--clr-primary-100);
+    --clr-header-nav: var(--clr-primary-900);
+
+    --nav-bottom-height: 3.5rem;
+
+    --clr-nav: var(--text-color);
+    --clr-nav-accent: var(--clr-secondary-900);
+
+    --footer-nav-items: 3;
+
+    --fs-input: var(--text-size);
+    --bg-input: var(--clr-primary-300);
+    --bg-input-hover: var(--clr-primary-400);
+    --bg-input-selected: var(--clr-primary-600);
+    --clr-input: var(--clr-neutral-800);
+    --clr-input-selected: var(--clr-neutral-400);
+    --br-input: var(--br-default);
+    --input-height: 2.25rem;
+
+    --img-aspect-ratio: 16/9;
+
+    --bg-sidemenue-blur: var(--clr-neutral-200);
+    --bg-sidemenu: var(--bg-header);
+
+    --bg-dialog-close: var(--clr-danger-500);
+    --bg-dialog-close-hover: var(--clr-danger-600);
+    --clr-dialog-submit: var(--clr-neutral-100);
+    --bg-dialog-submit: var(--clr-primary-900);
+    --bg-dialog-submit-hover: var(--clr-primary-800);
+
+    /* SelectPicker v1_0_0 – neue Variablen */
+    --clr-picker:          var(--bg-default);
+    --clr-picker-trigger:  var(--bg-input);
+    --clr-picker-input:    var(--clr-primary-600);
+    --fs-picker-header:    1rem;
+    --fs-input-picker:     0.9rem;
+    --br-picker:           var(--br-default);
+    --height-input-picker: var(--input-height);
+
+    --slideshow-ratio: none;
+  }
+
+  html, body {
+    font-size: var(--text-size);
+    line-height: var(--text-height);
+    color: var(--text-color);
+    fill: var(--text-color);
+    font-family: var(--font-family);
+  }
+}

@@ -1,0 +1,80 @@
+
+.header{
+    --shrink-size: 3rem;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: var(--bg-header);
+    z-index: 2000;
+    box-shadow: 0 0.5rem 1rem color-mix(in srgb, var(--clr-neutral-700) 70%, transparent 30%);
+    
+    position: sticky;
+    top: calc(var(--shrink-size)*-1);
+    height: calc(var(--header-height) + var(--header-nav-height) + var(--shrink-size));
+    
+    &[data-fixed="false"]{
+        position: static;
+    }
+    
+    &[data-shrink="false"], &[data-fixed="false"]{
+        top:0;
+        height: calc(var(--header-height) + var(--header-nav-height));
+    }
+
+    .header-inline{
+        position: sticky;
+        display:flex;
+        gap: 1rem;
+        top: 0;
+        height: var(--header-height);
+        align-items: center;
+        align-content: center;
+        padding: 0.5rem 5%;
+
+        justify-content: var(--align, space-between);
+        
+        .logo{
+            height: 90%;
+            display: flex;
+            align-items:center;
+            gap: 0.5rem;
+            font-size: min(calc(var(--header-height) - 1em), var(--fs-700));
+            font-family: ui-rounded, cursive, sans-serif; 
+        }
+
+        nav{
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            align-content: center;
+            >*:hover{
+                color: var(--text-hover);
+            }
+        }
+    }
+    > nav{
+        position: sticky;
+        top: var(--header-height);
+        height: var(--header-nav-height);
+        padding: 0 5%;
+        margin-top: auto;
+        background-color: var(--clr-neutral-50);
+        .nav-inline{
+            display: flex;
+            gap: 1rem;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding: 0.25rem 0;
+            *{
+                display: block;
+                min-width: max-content;
+            }
+        }
+    }
+
+}
+
+/*Creats offset for anchor links*/
+:target{
+    scroll-margin-top: calc(var(--header-height) + var(--header-nav-height));
+}

@@ -1,0 +1,15 @@
+[narrow]{
+    max-width: var(--width-small)!important;
+}
+
+[normal]{
+    max-width: var(--width-normal)!important;
+}
+
+[wide]{
+    max-width: var(--width-large)!important;
+}
+
+[full]{
+    max-width: var(--width-full)!important;
+}

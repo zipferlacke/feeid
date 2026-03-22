@@ -1,0 +1,715 @@
+/**
+ * feeid.css
+ * Feeid Layout & Erweiterungen
+ *
+ * Alle Basis-Styles kommen von wuefl-libs (via controll.css):
+ *   .card, .button, .dialog, .details, .container,
+ *   input, label, .select, .notification, .msr Icons etc.
+ *
+ * Hier stehen nur Feeid-spezifische Layout-Regeln
+ * und minimale Erweiterungen bestehender Klassen.
+ */
+
+/* ── Custom Elements ─────────────────────────── */
+
+feeid-header {
+  display: contents;
+}
+
+feeid-sidebar {
+  display: contents;
+}
+
+feeid-reader {
+  display: contents;
+}
+
+/* ── App-Grid ─────────────────────────────────── */
+
+#app {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  grid-template-rows: var(--header-height) 1fr;
+  grid-template-areas:
+    "header header"
+    "sidebar main";
+  min-height: 100dvh;
+}
+
+@media (max-width: 768px) {
+  #app {
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "header"
+      "main";
+  }
+}
+
+/* ── Header ───────────────────────────────────── */
+
+feeid-header #feeid-header,
+#feeid-header {
+  grid-area: header;
+  display: flex;
+  align-items: center;
+  padding: 0 1.5rem;
+  gap: 1rem;
+  background: var(--bg-header);
+  color: var(--clr-header);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  & .logo {
+    font-size: 1.4rem;
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    color: var(--clr-header);
+  }
+
+  & .button {
+    color: var(--clr-header);
+  }
+}
+
+/* ── Sidebar ──────────────────────────────────── */
+
+#feeid-sidebar {
+  grid-area: sidebar;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding: 0.5rem;
+  border-right: 1px solid var(--clr-neutral-200);
+  overflow-y: auto;
+  position: sticky;
+  top: var(--header-height);
+  height: calc(100dvh - var(--header-height));
+  background: var(--bg-default);
+}
+
+@media (max-width: 768px) {
+  #feeid-sidebar { display: none; }
+
+  #app {
+    grid-template-rows: var(--header-height) 1fr var(--nav-bottom-height);
+    grid-template-areas:
+      "header"
+      "main"
+      "bottom-nav";
+  }
+
+  .bottom_navigation {
+    grid-area: bottom-nav;
+  }
+}
+
+@media (min-width: 769px) {
+  .bottom_navigation { display: none; }
+}
+
+/* Sidebar-Navpunkte – nutzt .button aus wuefl-libs als Basis */
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: var(--br-default);
+  cursor: pointer;
+  color: var(--clr-nav);
+  border: none;
+  background: none;
+  width: 100%;
+  text-align: left;
+  text-decoration: none;
+  font-size: var(--fs-300);
+  transition: background 0.1s;
+
+  & .sidebar-item__name {
+    font-weight: 500;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  & img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--clr-neutral-200);
+    flex-shrink: 0;
+  }
+
+  &:hover, &.active {
+    background: var(--bg-input);
+    color: var(--clr-nav-accent);
+  }
+}
+
+.sidebar-section-title {
+  font-size: var(--fs-100);
+  font-weight: 600;
+  color: var(--clr-neutral-500);
+  padding: 0.75rem 0.75rem 0.25rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+/* ── Sidebar Bottom ──────────────────────────── */
+
+.sidebar-bottom {
+  margin-top: auto;
+  padding-top: 0.5rem;
+  border-top: 1px solid var(--clr-neutral-200);
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+/* ── Empty State ──────────────────────────────── */
+
+.feeid-empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 4rem 2rem;
+  gap: 0.75rem;
+  color: var(--clr-neutral-500);
+
+  & .feeid-empty__icon {
+    font-size: 3rem;
+    color: var(--clr-neutral-400);
+  }
+
+  & .feeid-empty__title {
+    font-size: var(--fs-600);
+    font-weight: 800;
+    color: var(--clr-headings);
+    margin: 0;
+  }
+
+  & .feeid-empty__text {
+    font-size: var(--fs-300);
+    margin: 0;
+    max-width: 360px;
+  }
+}
+
+/* ── Main ─────────────────────────────────────── */
+
+#feeid-main {
+  grid-area: main;
+  padding: 1rem;
+  background: var(--bg-default);
+}
+
+/* ── Feed Grid ────────────────────────────────── */
+
+.feed-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
+}
+
+/* ── Feed Card – erweitert .card aus wuefl-libs ─ */
+
+.feeid-card {
+  /* .card gibt: position relative, width 100%, padding 1rem,
+     border-radius 0.5rem, box-shadow, box-sizing */
+  padding: 0;
+  overflow: hidden;
+  cursor: pointer;
+  background: var(--bg-default);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px var(--clr-neutral-300);
+  }
+
+  & .feeid-card__image {
+    width: 100%;
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    background: var(--clr-neutral-200);
+    display: block;
+  }
+
+  & .feeid-card__body {
+    padding: 0.75rem 1rem;
+  }
+
+  & .feeid-card__feed {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-bottom: 0.4rem;
+    font-size: var(--fs-100);
+    color: var(--clr-neutral-500);
+
+    & img {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+  }
+
+  & .feeid-card__title {
+    font-size: var(--fs-400);
+    font-weight: 600;
+    line-height: 1.3;
+    margin: 0 0 0.35rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    color: var(--clr-headings);
+  }
+
+  & .feeid-card__summary {
+    font-size: var(--fs-200);
+    color: var(--clr-neutral-600);
+    line-height: 1.5;
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  & .feeid-card__event-date {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: var(--fs-100);
+    font-weight: 600;
+    color: var(--clr-primary-600);
+    margin-bottom: 0.35rem;
+  }
+
+  & .feeid-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    padding: 0.4rem 0.75rem 0.6rem;
+    border-top: 1px solid var(--clr-neutral-200);
+  }
+
+  /* Nutzt .button[data-shape="no-background"] aus wuefl-libs */
+  & .feeid-card__action-btn {
+    display: flex;
+    align-items: center;
+    gap: 0.2rem;
+    font-size: var(--fs-100);
+    padding: 0.25rem 0.5rem;
+    border-radius: 2rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: var(--clr-neutral-500);
+    transition: background 0.1s, color 0.1s;
+
+    &:hover { background: var(--clr-neutral-200); }
+    &.active { color: var(--clr-primary-600); }
+  }
+
+  & .feeid-card__ap-badge {
+    margin-left: auto;
+    font-size: var(--fs-100);
+    color: var(--clr-neutral-400);
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+  }
+}
+
+/* ── Feed Profil-Ansicht ──────────────────────── */
+
+.feed-profile__header {
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--clr-neutral-200);
+  margin-bottom: 1rem;
+
+  & .feed-profile__avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 50%;
+    object-fit: cover;
+    background: var(--clr-neutral-200);
+    flex-shrink: 0;
+  }
+
+  & .feed-profile__meta {
+    flex: 1;
+
+    & .feed-profile__title-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    & .feed-profile__name {
+      font-size: var(--fs-600);
+      font-weight: 700;
+      margin: 0;
+      color: var(--clr-headings);
+    }
+
+    & .feed-profile__desc {
+      font-size: var(--fs-200);
+      color: var(--clr-neutral-600);
+      margin: 0.35rem 0;
+    }
+
+    & .feed-profile__stats {
+      display: flex;
+      gap: 0.5rem;
+      font-size: var(--fs-100);
+      color: var(--clr-neutral-500);
+      margin-top: 0.4rem;
+      align-items: center;
+
+      & .badge {
+        background: var(--bg-input);
+        color: var(--clr-primary-700);
+        padding: 0.1rem 0.4rem;
+        border-radius: 0.25rem;
+        font-size: var(--fs-100);
+        font-weight: 600;
+      }
+    }
+  }
+}
+
+/* ── Feed Profil Actions ─────────────────────── */
+
+.feed-profile__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: auto;
+}
+
+/* ── Reader Dialog ───────────────────────────── */
+
+.feeid-reader__dialog {
+  width: min(800px, 95vw);
+  max-height: 90dvh;
+  display: none;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border: none;
+  border-radius: var(--br-default);
+  box-shadow: 0 0 2rem var(--clr-neutral-800);
+  background: var(--clr-neutral-50);
+
+  &[open] {
+    display: flex;
+  }
+
+  &::backdrop {
+    background-color: color-mix(in hsl, var(--clr-neutral-50) 50%, transparent);
+  }
+
+  & .feeid-reader__header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--clr-neutral-200);
+    flex-shrink: 0;
+  }
+
+  & .feeid-reader__feed-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0.2rem 0.4rem;
+    border-radius: var(--br-default);
+    color: inherit;
+    font: inherit;
+    flex-shrink: 0;
+
+    &:hover {
+      background: var(--bg-input);
+    }
+
+    & .feeid-reader__feed-avatar {
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    & .feeid-reader__feed-name {
+      font-size: var(--fs-200);
+      font-weight: 600;
+      color: var(--clr-headings);
+      white-space: nowrap;
+    }
+  }
+
+  & .feeid-reader__url {
+    font-size: var(--fs-100);
+    color: var(--clr-neutral-500);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    flex: 1;
+  }
+
+  & .feeid-reader__content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 1.5rem 2rem;
+    line-height: 1.7;
+  }
+
+  & .feeid-reader__title {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--clr-headings);
+  }
+}
+
+/* ── Header Subtitle ──────────────────────────── */
+
+.feeid-header__subtitle {
+  font-size: var(--fs-200);
+  opacity: 0.7;
+  margin-left: 0.2rem;
+}
+
+/* ── Profile Grid ────────────────────────────── */
+
+.profiles-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  padding: 1rem 0;
+}
+
+.profile-card {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  cursor: default;
+
+  & .profile-card__link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex: 1;
+    cursor: pointer;
+    min-width: 0;
+
+    &:hover .profile-card__name {
+      color: var(--clr-primary-600);
+    }
+  }
+
+  & .profile-card__avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background: var(--bg-input);
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  & .profile-card__info {
+    min-width: 0;
+    flex: 1;
+  }
+
+  & .profile-card__name {
+    font-size: var(--fs-400);
+    font-weight: 600;
+    margin: 0 0 0.2rem;
+    color: var(--clr-headings);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    transition: color 0.1s;
+  }
+
+  & .profile-card__desc {
+    font-size: var(--fs-100);
+    color: var(--clr-neutral-500);
+    margin: 0 0 0.25rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 1;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  & .profile-card__actions {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-shrink: 0;
+  }
+}
+
+/* ── Discover Feed Header ────────────────────── */
+
+.discover-feed-header {
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  padding: 0.75rem 0 1rem;
+  flex-wrap: wrap;
+}
+
+/* ── Entdecken ────────────────────────────────── */
+
+.discover-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+/* Nutzt .card aus wuefl-libs */
+.discover-card {
+  padding: 0;
+  overflow: hidden;
+
+  & .discover-card__preview {
+    width: 100%;
+    aspect-ratio: 16/9;
+    background: var(--clr-neutral-200);
+    overflow: hidden;
+    display: none;
+
+    &:has(img) {
+      display: block;
+    }
+
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+  }
+
+  & .discover-card__body {
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  & .discover-card__post-preview {
+    border-top: 1px solid var(--clr-neutral-200);
+    padding-top: 0.5rem;
+    display: none;
+
+    &:has(p) {
+      display: block;
+    }
+  }
+
+  & .discover-card__post-title {
+    font-size: var(--fs-200);
+    font-weight: 600;
+    color: var(--clr-headings);
+    margin: 0 0 0.2rem;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  & .discover-card__post-summary {
+    font-size: var(--fs-100);
+    color: var(--clr-neutral-500);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  &:hover { transform: translateY(-2px); }
+
+  & .discover-card__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    & .discover-card__avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--bg-input);
+      flex-shrink: 0;
+
+      & img {
+        width: 100%;
+        height: 100%;
+        border-radius: 50%;
+        object-fit: cover;
+      }
+    }
+
+    & h3 {
+      font-size: var(--fs-400);
+      font-weight: 600;
+      margin: 0 0 0.2rem;
+      color: var(--clr-headings);
+    }
+  }
+
+  & .discover-card__desc {
+    font-size: var(--fs-200);
+    color: var(--clr-neutral-600);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  & .discover-card__footer {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: auto;
+    flex-wrap: wrap;
+  }
+}
+
+.tag {
+  font-size: var(--fs-100);
+  padding: 0.1rem 0.5rem;
+  border-radius: 2rem;
+  background: var(--bg-input);
+  color: var(--clr-input);
+}

@@ -1,0 +1,135 @@
+@layer components {
+    html:has(.userDialog:open), body:has(.userDialog:open){
+        overflow:hidden;
+    }
+
+    .userDialog{
+        z-index: 1000;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        border: none;
+        max-width: min(800px, 80vw);
+        width: max-content;
+        max-height: 90dvh;
+        padding: 1rem;
+        padding-right: 0.5rem;
+        border-radius: 1rem;
+        position: fixed;
+        
+        background-color: var(--clr-neutral-50);
+        box-shadow: 0 0 2rem var(--clr-neutral-800);
+
+        &::backdrop{
+            background-color: color-mix(in hsl, var(--clr-neutral-50) 50%, transparent);
+        }
+
+        box-sizing: border-box;
+        --dialog-gap:0.75rem; 
+        overflow: hidden;
+        form{
+            display: grid;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr min-content;
+            gap: var(--dialog-gap);
+            max-height:calc(90dvh - 2em);
+            
+            & .content{
+                display: grid;
+                grid-template-rows: min-content 1fr;
+                grid-template-areas: "header" "main";
+                gap: var(--dialog-gap);
+                overflow-y: auto;
+                padding-right: 0.5rem;
+
+                & header{
+                    grid-area: header;
+                    font-size: var(--fs-800);
+                    font-weight: bold;
+                    p{font-size:var(--fs-300);}
+                }
+                
+                & main{
+                    grid-area: main;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 1rem;
+                    margin: 0rem;
+                }
+            }
+            
+            & footer{
+                display: flex;
+                gap: 1rem;
+                justify-content: space-around;
+                margin-right: 0.5rem;
+                & .button{
+                    max-width: max-content;
+                    width: 100%;
+                    height: auto;
+                }
+
+                & .dialog_close{
+                    background-color: var(--bg-dialog-close);
+                    &:hover{
+                        background-color: var(--bg-dialog-close-hover);
+                    }
+                }
+                & .dialog_submit{
+                    background-color: var(--bg-dialog-submit);
+                    color: var(--clr-dialog-submit);
+                    &:hover{
+                        background-color: var(--bg-dialog-submit-hover);
+                    }
+                }
+            }
+        }
+
+        &:not([data-dialog-type="normal"]){
+            --dialog-gap: clamp(0.5rem, 2vh, 3rem);
+            border-top: calc(var(--dialog-gap)*2) solid var(--clr-info-type);
+            
+            & form{
+                max-height:calc(90dvh  - 2rem - var(--dialog-gap)*2);
+                .content{
+                    grid-template-columns: 20% calc(80% - var(--dialog-gap));
+                    grid-template-areas: "img header"
+                    "img main"        
+                }
+            }
+
+            & .info_img{
+                grid-area: img;
+                display: grid;
+                font-size: 3rem;
+                place-content: center;
+                color: var(--clr-info-type);
+            }
+
+            &[data-dialog-type="error"] {--clr-info-type: var(--clr-danger-300);}   
+            &[data-dialog-type="warning"] {--clr-info-type: var(--clr-warning-300);}   
+            &[data-dialog-type="info"] {--clr-info-type: var(--clr-info-300);}      
+            
+            @media screen and (max-width:700px) {
+                max-width: 90vw;
+                width: 90vw;
+                & form .content{
+                    font-size: 0.9rem;
+                    grid-template-rows:  max-content min-content min-content;
+                    grid-template-areas: "img img"
+                        "header header"
+                        "main main";
+
+                    & info_img{
+                        width: 25%;
+                        margin: auto;
+                    }
+                    
+                    & header{
+                        text-align: center;
+                    }
+                }
+            }
+        }
+    }
+}

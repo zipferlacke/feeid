@@ -1,0 +1,8 @@
+.details{
+    border-radius: var(--br-default);
+    padding: 0.5rem;
+
+    > div {
+        margin-top: 1rem;
+    }
+}

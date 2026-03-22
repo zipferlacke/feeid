@@ -1,0 +1,13 @@
+.highlight{
+    background-color: var(--clr-primary-900)!important;
+    color: var(--clr-neutral-100)!important;
+}
+
+
+@media screen and (max-width:700px){
+    body{
+        &:has(.header[computer]){
+            margin-top: 0;
+        }
+    }
+} 

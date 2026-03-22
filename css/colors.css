@@ -1,0 +1,177 @@
+:root{
+    color-scheme: light dark;
+    --clr-primary: hsl(38.64deg 100% 49.2%);
+    --clr-secondary: hsl(199.99 24.27% 56.47%);
+    --clr-info: #04A3F2;
+    --clr-success: hsl(93, 95%, 44%);
+    --clr-warning: #FF990A;
+    --clr-danger: hsl(1, 90%, 59%);
+    --clr-neutral: hsl(0, 0%, 59%);
+
+    --step-50: 97.5%;
+    --step-100: 95%;
+    --step-200: 85%;
+    --step-300: 75%;
+    --step-400: 65%;
+    --step-500: 50%;
+    --step-600: 40%;
+    --step-700: 30%;
+    --step-800: 20%;
+    --step-900: 10%;
+    --step-950: 8.5%;
+
+    --clr-primary-100: light-dark(hsl(from var(--clr-primary) h s var(--step-100)), hsl(from var(--clr-primary) h s var(--step-900)));    
+    --clr-primary-200: light-dark(hsl(from var(--clr-primary) h s var(--step-200)), hsl(from var(--clr-primary) h s var(--step-800)));    
+    --clr-primary-300: light-dark(hsl(from var(--clr-primary) h s var(--step-300)), hsl(from var(--clr-primary) h s var(--step-700)));    
+    --clr-primary-400: light-dark(hsl(from var(--clr-primary) h s var(--step-400)), hsl(from var(--clr-primary) h s var(--step-600)));    
+    --clr-primary-500: light-dark(hsl(from var(--clr-primary) h s var(--step-500)), hsl(from var(--clr-primary) h s var(--step-500)));    
+    --clr-primary-600: light-dark(hsl(from var(--clr-primary) h s var(--step-600)), hsl(from var(--clr-primary) h s var(--step-400)));    
+    --clr-primary-700: light-dark(hsl(from var(--clr-primary) h s var(--step-700)), hsl(from var(--clr-primary) h s var(--step-300)));    
+    --clr-primary-800: light-dark(hsl(from var(--clr-primary) h s var(--step-800)), hsl(from var(--clr-primary) h s var(--step-200)));    
+    --clr-primary-900: light-dark(hsl(from var(--clr-primary) h s var(--step-900)), hsl(from var(--clr-primary) h s var(--step-100)));    
+
+    --clr-secondary-100: light-dark(hsl(from var(--clr-secondary) h s var(--step-100)), hsl(from var(--clr-secondary) h s var(--step-900)));    
+    --clr-secondary-200: light-dark(hsl(from var(--clr-secondary) h s var(--step-200)), hsl(from var(--clr-secondary) h s var(--step-800)));    
+    --clr-secondary-300: light-dark(hsl(from var(--clr-secondary) h s var(--step-300)), hsl(from var(--clr-secondary) h s var(--step-700)));    
+    --clr-secondary-400: light-dark(hsl(from var(--clr-secondary) h s var(--step-400)), hsl(from var(--clr-secondary) h s var(--step-600)));    
+    --clr-secondary-500: light-dark(hsl(from var(--clr-secondary) h s var(--step-500)), hsl(from var(--clr-secondary) h s var(--step-500)));    
+    --clr-secondary-600: light-dark(hsl(from var(--clr-secondary) h s var(--step-600)), hsl(from var(--clr-secondary) h s var(--step-400)));    
+    --clr-secondary-700: light-dark(hsl(from var(--clr-secondary) h s var(--step-700)), hsl(from var(--clr-secondary) h s var(--step-300)));    
+    --clr-secondary-800: light-dark(hsl(from var(--clr-secondary) h s var(--step-800)), hsl(from var(--clr-secondary) h s var(--step-200)));    
+    --clr-secondary-900: light-dark(hsl(from var(--clr-secondary) h s var(--step-900)), hsl(from var(--clr-secondary) h s var(--step-100)));
+
+    --clr-info-100: light-dark(hsl(from var(--clr-info) h s var(--step-100)), hsl(from var(--clr-info) h s var(--step-900)));    
+    --clr-info-200: light-dark(hsl(from var(--clr-info) h s var(--step-200)), hsl(from var(--clr-info) h s var(--step-800)));    
+    --clr-info-300: light-dark(hsl(from var(--clr-info) h s var(--step-300)), hsl(from var(--clr-info) h s var(--step-700)));    
+    --clr-info-400: light-dark(hsl(from var(--clr-info) h s var(--step-400)), hsl(from var(--clr-info) h s var(--step-600)));    
+    --clr-info-500: light-dark(hsl(from var(--clr-info) h s var(--step-500)), hsl(from var(--clr-info) h s var(--step-500)));    
+    --clr-info-600: light-dark(hsl(from var(--clr-info) h s var(--step-600)), hsl(from var(--clr-info) h s var(--step-400)));    
+    --clr-info-700: light-dark(hsl(from var(--clr-info) h s var(--step-700)), hsl(from var(--clr-info) h s var(--step-300)));    
+    --clr-info-800: light-dark(hsl(from var(--clr-info) h s var(--step-800)), hsl(from var(--clr-info) h s var(--step-200)));    
+    --clr-info-900: light-dark(hsl(from var(--clr-info) h s var(--step-900)), hsl(from var(--clr-info) h s var(--step-100)));
+
+    --clr-success-100: light-dark(hsl(from var(--clr-success) h s var(--step-100)), hsl(from var(--clr-success) h s var(--step-900)));    
+    --clr-success-200: light-dark(hsl(from var(--clr-success) h s var(--step-200)), hsl(from var(--clr-success) h s var(--step-800)));    
+    --clr-success-300: light-dark(hsl(from var(--clr-success) h s var(--step-300)), hsl(from var(--clr-success) h s var(--step-700)));    
+    --clr-success-400: light-dark(hsl(from var(--clr-success) h s var(--step-400)), hsl(from var(--clr-success) h s var(--step-600)));    
+    --clr-success-500: light-dark(hsl(from var(--clr-success) h s var(--step-500)), hsl(from var(--clr-success) h s var(--step-500)));    
+    --clr-success-600: light-dark(hsl(from var(--clr-success) h s var(--step-600)), hsl(from var(--clr-success) h s var(--step-400)));    
+    --clr-success-700: light-dark(hsl(from var(--clr-success) h s var(--step-700)), hsl(from var(--clr-success) h s var(--step-300)));    
+    --clr-success-800: light-dark(hsl(from var(--clr-success) h s var(--step-800)), hsl(from var(--clr-success) h s var(--step-200)));    
+    --clr-success-900: light-dark(hsl(from var(--clr-success) h s var(--step-900)), hsl(from var(--clr-success) h s var(--step-100)));
+
+    --clr-warning-100: light-dark(hsl(from var(--clr-warning) h s var(--step-100)), hsl(from var(--clr-warning) h s var(--step-900)));    
+    --clr-warning-200: light-dark(hsl(from var(--clr-warning) h s var(--step-200)), hsl(from var(--clr-warning) h s var(--step-800)));    
+    --clr-warning-300: light-dark(hsl(from var(--clr-warning) h s var(--step-300)), hsl(from var(--clr-warning) h s var(--step-700)));    
+    --clr-warning-400: light-dark(hsl(from var(--clr-warning) h s var(--step-400)), hsl(from var(--clr-warning) h s var(--step-600)));    
+    --clr-warning-500: light-dark(hsl(from var(--clr-warning) h s var(--step-500)), hsl(from var(--clr-warning) h s var(--step-500)));    
+    --clr-warning-600: light-dark(hsl(from var(--clr-warning) h s var(--step-600)), hsl(from var(--clr-warning) h s var(--step-400)));    
+    --clr-warning-700: light-dark(hsl(from var(--clr-warning) h s var(--step-700)), hsl(from var(--clr-warning) h s var(--step-300)));    
+    --clr-warning-800: light-dark(hsl(from var(--clr-warning) h s var(--step-800)), hsl(from var(--clr-warning) h s var(--step-200)));    
+    --clr-warning-900: light-dark(hsl(from var(--clr-warning) h s var(--step-900)), hsl(from var(--clr-warning) h s var(--step-100)));
+
+    --clr-danger-100: light-dark(hsl(from var(--clr-danger) h s var(--step-100)), hsl(from var(--clr-danger) h s var(--step-900)));    
+    --clr-danger-200: light-dark(hsl(from var(--clr-danger) h s var(--step-200)), hsl(from var(--clr-danger) h s var(--step-800)));    
+    --clr-danger-300: light-dark(hsl(from var(--clr-danger) h s var(--step-300)), hsl(from var(--clr-danger) h s var(--step-700)));    
+    --clr-danger-400: light-dark(hsl(from var(--clr-danger) h s var(--step-400)), hsl(from var(--clr-danger) h s var(--step-600)));    
+    --clr-danger-500: light-dark(hsl(from var(--clr-danger) h s var(--step-500)), hsl(from var(--clr-danger) h s var(--step-500)));    
+    --clr-danger-600: light-dark(hsl(from var(--clr-danger) h s var(--step-600)), hsl(from var(--clr-danger) h s var(--step-400)));    
+    --clr-danger-700: light-dark(hsl(from var(--clr-danger) h s var(--step-700)), hsl(from var(--clr-danger) h s var(--step-300)));    
+    --clr-danger-800: light-dark(hsl(from var(--clr-danger) h s var(--step-800)), hsl(from var(--clr-danger) h s var(--step-200)));    
+    --clr-danger-900: light-dark(hsl(from var(--clr-danger) h s var(--step-900)), hsl(from var(--clr-danger) h s var(--step-100)));
+
+    --clr-neutral-50: light-dark(hsl(from var(--clr-neutral) h s var(--step-50)), hsl(from var(--clr-neutral) h s var(--step-950)));    
+    --clr-neutral-100: light-dark(hsl(from var(--clr-neutral) h s var(--step-100)), hsl(from var(--clr-neutral) h s var(--step-900)));    
+    --clr-neutral-200: light-dark(hsl(from var(--clr-neutral) h s var(--step-200)), hsl(from var(--clr-neutral) h s var(--step-800)));    
+    --clr-neutral-300: light-dark(hsl(from var(--clr-neutral) h s var(--step-300)), hsl(from var(--clr-neutral) h s var(--step-700)));    
+    --clr-neutral-400: light-dark(hsl(from var(--clr-neutral) h s var(--step-400)), hsl(from var(--clr-neutral) h s var(--step-600)));    
+    --clr-neutral-500: light-dark(hsl(from var(--clr-neutral) h s var(--step-500)), hsl(from var(--clr-neutral) h s var(--step-500)));    
+    --clr-neutral-600: light-dark(hsl(from var(--clr-neutral) h s var(--step-600)), hsl(from var(--clr-neutral) h s var(--step-400)));    
+    --clr-neutral-700: light-dark(hsl(from var(--clr-neutral) h s var(--step-700)), hsl(from var(--clr-neutral) h s var(--step-300)));    
+    --clr-neutral-800: light-dark(hsl(from var(--clr-neutral) h s var(--step-800)), hsl(from var(--clr-neutral) h s var(--step-200)));    
+    --clr-neutral-900: light-dark(hsl(from var(--clr-neutral) h s var(--step-900)), hsl(from var(--clr-neutral) h s var(--step-100)));
+/* 
+    --clr-neutral-50: hsl(0, 0%, 97.5%);
+    --clr-neutral-100: hsl(218, 30%, 93%);
+    --clr-neutral-200: hsl(214, 19%, 83%);
+    --clr-neutral-300: hsl(221, 17%, 73%);
+    --clr-neutral-400: hsl(219, 12%, 63%);
+    --clr-neutral-500: hsl(219, 15%, 54%);
+    --clr-neutral-600: hsl(218, 13%, 46%);
+    --clr-neutral-700: hsl(219, 16%, 35%);
+    --clr-neutral-800: hsl(223, 17%, 25%);
+    --clr-neutral-900: hsl(223, 19%, 15%); */
+}
+
+.bg-primary-100{background-color: var(--clr-primary-100)!important;}
+.bg-primary-200{background-color: var(--clr-primary-200)!important;}
+.bg-primary-300{background-color: var(--clr-primary-300)!important;}
+.bg-primary-400{background-color: var(--clr-primary-400)!important;}
+.bg-primary-500{background-color: var(--clr-primary-500)!important;}
+.bg-primary-600{background-color: var(--clr-primary-600)!important;}
+.bg-primary-700{background-color: var(--clr-primary-700)!important;}
+.bg-primary-800{background-color: var(--clr-primary-800)!important;}
+.bg-primary-900{background-color: var(--clr-primary-900)!important;}
+
+.clr-primary-100{color: var(--clr-primary-100)!important;}
+.clr-primary-200{color: var(--clr-primary-200)!important;}
+.clr-primary-300{color: var(--clr-primary-300)!important;}
+.clr-primary-400{color: var(--clr-primary-400)!important;}
+.clr-primary-500{color: var(--clr-primary-500)!important;}
+.clr-primary-600{color: var(--clr-primary-600)!important;}
+.clr-primary-700{color: var(--clr-primary-700)!important;}
+.clr-primary-800{color: var(--clr-primary-800)!important;}
+.clr-primary-900{color: var(--clr-primary-900)!important;}
+
+
+.bg-secondary-100{background-color: var(--clr-secondary-100)!important;}
+.bg-secondary-200{background-color: var(--clr-secondary-200)!important;}
+.bg-secondary-300{background-color: var(--clr-secondary-300)!important;}
+.bg-secondary-400{background-color: var(--clr-secondary-400)!important;}
+.bg-secondary-500{background-color: var(--clr-secondary-500)!important;}
+.bg-secondary-600{background-color: var(--clr-secondary-600)!important;}
+.bg-secondary-700{background-color: var(--clr-secondary-700)!important;}
+.bg-secondary-800{background-color: var(--clr-secondary-800)!important;}
+.bg-secondary-900{background-color: var(--clr-secondary-900)!important;}
+
+.clr-secondary-100{color: var(--clr-secondary-100)!important;}
+.clr-secondary-200{color: var(--clr-secondary-200)!important;}
+.clr-secondary-300{color: var(--clr-secondary-300)!important;}
+.clr-secondary-400{color: var(--clr-secondary-400)!important;}
+.clr-secondary-500{color: var(--clr-secondary-500)!important;}
+.clr-secondary-600{color: var(--clr-secondary-600)!important;}
+.clr-secondary-700{color: var(--clr-secondary-700)!important;}
+.clr-secondary-800{color: var(--clr-secondary-800)!important;}
+.clr-secondary-900{color: var(--clr-secondary-900)!important;}
+
+.bg-white{background-color: var(--clr-neutral-50);}
+.bg-neutral-100{background-color: var(--clr-neutral-100)!important;}
+.bg-neutral-200{background-color: var(--clr-neutral-200)!important;}
+.bg-neutral-300{background-color: var(--clr-neutral-300)!important;}
+.bg-neutral-400{background-color: var(--clr-neutral-400)!important;}
+.bg-neutral-500{background-color: var(--clr-neutral-500)!important;}
+.bg-neutral-600{background-color: var(--clr-neutral-600)!important;}
+.bg-neutral-700{background-color: var(--clr-neutral-700)!important;}
+.bg-neutral-800{background-color: var(--clr-neutral-800)!important;}
+.bg-neutral-900{background-color: var(--clr-neutral-900)!important;}
+
+.clr-neutral-100{color: var(--clr-neutral-100)!important;}
+.clr-neutral-200{color: var(--clr-neutral-200)!important;}
+.clr-neutral-300{color: var(--clr-neutral-300)!important;}
+.clr-neutral-400{color: var(--clr-neutral-400)!important;}
+.clr-neutral-500{color: var(--clr-neutral-500)!important;}
+.clr-neutral-600{color: var(--clr-neutral-600)!important;}
+.clr-neutral-700{color: var(--clr-neutral-700)!important;}
+.clr-neutral-800{color: var(--clr-neutral-800)!important;}
+.clr-neutral-900{color: var(--clr-neutral-900)!important;}
+.clr-black{color: var(--clr-neutral-900)!important;}
+
+.clr-danger-100{color: var(--clr-danger-100)!important;}
+.clr-danger-200{color: var(--clr-danger-200)!important;}
+.clr-danger-300{color: var(--clr-danger-300)!important;}
+.clr-danger-400{color: var(--clr-danger-400)!important;}
+.clr-danger-500{color: var(--clr-danger-500)!important;}
+.clr-danger-600{color: var(--clr-danger-600)!important;}
+.clr-danger-700{color: var(--clr-danger-700)!important;}
+.clr-danger-800{color: var(--clr-danger-800)!important;}
+.clr-danger-900{color: var(--clr-danger-900)!important;}

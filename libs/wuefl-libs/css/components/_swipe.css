@@ -1,0 +1,83 @@
+.swipe-container{margin: 0;}
+.swipe-card{
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr;
+    overflow: clip;
+    border-radius: 1rem;
+    
+    > *{
+        grid-column: 1;
+        grid-row: 1;
+    }
+
+    .swipe-left, .swipe-right{
+        display: flex;
+    
+        button{
+            border: transparent;
+            outline: transparent;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+        }
+    }
+
+    .swipe-right{
+        justify-content: flex-end;
+    }
+    
+    .swipe-content{
+        height: 3rem;
+        padding: 1rem;
+        z-index: 2;
+        background-color: var(--bg-default);
+    }
+
+    .swipe-start{
+        opacity: 0.5;
+    }
+
+    .popover-toggle{
+        grid-column: 2;
+        display: none;
+        place-content: center;
+        border: transparent;
+        outline: transparent;
+        height: 100%;
+        width:2rem;
+        cursor: pointer;
+        background-color: var(--bg-input);
+        @media (pointer: fine) {
+            & {display:grid};
+        }
+    }
+
+    .popover:popover-open {
+        position: absolute;
+        top: 0;
+
+        display: flex;
+        background-color: var(--bg-default);
+        box-shadow: var(--clr-neutral-800) 0.25rem 0.25rem 1rem;
+        z-index: 5;
+        border: transparent; 
+        padding: 0.5rem!important;
+        border-radius:var(--br-default);
+        ul{
+            list-style: none;
+            margin: 0;
+            li{
+                display: flex;
+                gap:0.5rem;
+                cursor: pointer;
+                padding: 0.25rem;
+                border-radius: var(--br-default);
+                &:hover{
+                    background-color: hsl(from var(--text-color) h s l /0.1 );
+                }
+            }
+        }
+    }
+}

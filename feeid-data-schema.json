@@ -1,0 +1,75 @@
+{
+  "_version": "1.0.0",
+  "_comment": "Feeid lokaler Datenspeicher. Dieses JSON kann lokal liegen oder über eine selbst gehostete URL synchronisiert werden.",
+
+  "profile": {
+    "id": "",
+    "_comment_id": "UUID v4 – wird beim ersten Start generiert. Bleibt immer gleich, auch nach Sync.",
+    "display_name": "",
+    "avatar_url": "",
+    "location": {
+      "enabled": false,
+      "lat": null,
+      "lng": null,
+      "radius_km": 50,
+      "label": ""
+    },
+    "interests": []
+  },
+
+  "account": {
+    "_comment": "PHASE 2 – Platzhalter. Hier wird später das Feeid/ActivityPub-Konto verknüpft.",
+    "_phase": 2,
+    "activitypub_handle": null,
+    "_comment_handle": "z.B. @user@feeid.social oder eigener Server",
+    "activitypub_server": null,
+    "token": null
+  },
+
+  "feeds": [
+    {
+      "_comment": "Ein abonnierter RSS-Feed oder ActivityPub-Account.",
+      "id": "",
+      "url": "",
+      "title": "",
+      "description": "",
+      "avatar_url": "",
+      "type": "rss",
+      "_type_options": ["rss", "activitypub"],
+      "subscribed_at": "",
+      "last_seen_item_id": "",
+      "_comment_last_seen": "ID des letzten bekannten Items – für neue Einträge erkennen",
+      "notifications": {
+        "enabled": false,
+        "categories": []
+      },
+      "_comment_notifications": "categories = [{name: 'Konzert', enabled: true}, ...] – aus Feed-Tags befüllt"
+    }
+  ],
+
+  "settings": {
+    "feed_sort": "by_date",
+    "_feed_sort_options": ["chronological", "by_date", "by_interest"],
+    "show_recommendations": true,
+    "theme": "system",
+    "_theme_options": ["light", "dark", "system"],
+    "language": "de",
+    "sync": {
+      "_comment": "Nutzer gibt eine URL an wo sein JSON liegt – Feeid holt es von dort.",
+      "enabled": false,
+      "url": "",
+      "last_synced_at": null
+    }
+  },
+
+  "likes": {
+    "_comment": "Lokal gespeicherte Likes. Key = URL des Feed-Eintrags, Value = Timestamp.",
+    "_comment_phase2": "PHASE 2 – Likes werden zusätzlich via ActivityPub publiziert.",
+    "https://example.com/artikel/1": "2026-03-21T10:00:00Z"
+  },
+
+  "saves": {
+    "_comment": "Gemerkte Einträge. Key = URL des Feed-Eintrags, Value = Timestamp.",
+    "https://example.com/artikel/2": "2026-03-21T11:00:00Z"
+  }
+}

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feeid</title>
+
+  <!-- PWA -->
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#7c3aed">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Feeid">
+
+  <!-- wuefl-libs + Feeid Styles -->
+  <link rel="stylesheet" href="./css/controll.css">
+  <link rel="stylesheet" href="./css/feeid.css">
+</head>
+<body>
+
+  <!-- App wird hier von app.js gerendert -->
+  <div id="app">
+    <!-- Shell wird von app.js via renderer.renderShell() befüllt -->
+  </div>
+
+  <!-- Feeid App -->
+  <script type="module" src="./js/app.js"></script>
+
+  <!-- Service Worker registrieren -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('./service-worker.js', { scope: '/feeid/' })
+        .then(reg => console.log('Feeid SW registriert:', reg.scope))
+        .catch(err => console.warn('Feeid SW Fehler:', err));
+    }
+  </script>
+
+</body>
+</html>

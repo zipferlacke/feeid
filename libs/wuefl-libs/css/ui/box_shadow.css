@@ -1,0 +1,6 @@
+.box-shadow-100{box-shadow: 0.125rem 0.125rem 0.125rem var(--clr-neutral-300);}
+.box-shadow-200{box-shadow: 0.25rem 0.25rem 0.25rem var(--clr-neutral-300);}
+.box-shadow-300{box-shadow: 0rem 0.5rem 0.5rem var(--clr-neutral-300);}
+.box-shadow-400{box-shadow: 0.75rem 0.75rem 0.75rem var(--clr-neutral-300);}
+.box-shadow-500{box-shadow: 1rem 1rem 1rem var(--clr-neutral-300);}
+.box-shadow-600{box-shadow: 1.25rem 1.25rem 1.25rem var(--clr-neutral-300);}

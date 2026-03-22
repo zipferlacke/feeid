@@ -1,0 +1,266 @@
+.button, input, textarea, .select{
+    gap: 0.5rem;
+    padding: 0.25rem 1rem;
+    height: clamp(min-content, var(--input-height), 100%);
+    min-width: 0;
+    min-height:0;
+    appearance: none;
+    background-color: var(--bg-input);
+    /* color: var(--clr-input); */
+    font-size: var(--fs-input);
+    text-align: center;
+    border-radius: var(--br-input);
+
+    border: none;
+    outline: none;
+    &:hover{
+        background-color: var(--bg-input-hover);
+    }
+    &.hightlight:hover{
+        background-color: var(--clr-primary-800)!important;
+    }
+}
+
+
+/* ==================================== */
+/* ===           Knöpfe              ===*/
+/* ==================================== */
+
+.button{
+    display: flex;
+    place-content: center;
+    place-items: center;
+    align-items: center;
+    align-content: center;
+
+    cursor: pointer;
+    
+    &:focus{
+        outline: 1px solid var(--clr-primary-900);
+    }
+
+    &[data-shape~="round"]{
+        padding: 0.25rem;
+        border-radius: 50%;
+        aspect-ratio: 1/1 !important;
+    }
+
+    &[data-shape~="square"]{
+        padding: 0.25rem;
+        border-radius: 0.75rem;
+        aspect-ratio: 1/1 !important;
+    }
+
+    &[data-shape~="no-background"]{
+        background-color: transparent;
+        padding: 0.25rem;
+        outline: 0px;
+        &:hover, &:focus{
+            padding: 0.25rem;
+            outline: 0px;
+            background-color: transparent;
+        }
+    }
+
+    &[data-shape~="full"]{
+        width: 100%;
+    }
+}
+
+
+/* ==================================== */
+/* ===           Inputs              ===*/
+/* ==================================== */
+
+input[type="text"], input[type="number"]{
+    max-width:100%;
+    min-width:5rem;
+}
+
+textarea{
+    min-height: calc(var(--input-height) *3);
+    line-height: 1rem;
+}
+
+.radio{
+    background-color: transparent;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--br-default);
+
+    &:has(input[type="radio"]:checked){
+        background-color: var(--bg-default);
+        color: var(--clr-input);
+        box-shadow: 0.05rem 0.05rem 0.5rem var(--clr-neutral-300);
+    }
+    &:hover{
+        background-color: var(--bg-input-hover);
+    }
+
+    input[type="radio"]{
+        display:none
+    }
+}
+
+input[type="radio"]{
+    appearance: auto;
+}
+
+input[type="checkbox"][data-shape="toggle"]{
+    position: relative;
+    -webkit-appearance: none;
+    appearance: none;
+    background-color: var(--clr-neutral-300);
+    margin: 0;
+    width: 3.25rem !important;
+    height: 1.5rem;
+    min-height: 0;
+    border: none;
+    border-radius: 2rem;
+    transform: translateY(-0.075em);
+    display: grid;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+    cursor: pointer;
+    &::before {
+        position: absolute;
+        content: "";
+        width: 1rem;
+        height: 1rem;
+        left: 0.25rem;
+        transition: 120ms transform ease-in-out;
+        background-color: var(--clr-neutral-50);
+        border-radius: 50%;
+        transition: left 0.2s ease-in-out;
+    }
+    &:checked {
+        background-color: var(--clr-info-500);
+    }
+    &:checked::before {
+        left: 2rem;
+    }
+}
+
+
+input[type="search"]{
+    text-align: left;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='white' width='16' height='16' class='bi bi-search' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z'%3E%3C/path%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: 0.75rem;
+    width: 10rem;
+    padding-left: 2.25rem;
+
+    &[data-shape="square"]{
+        cursor: pointer;
+        height: var(--input-height);
+        width: var(--input-height);
+        aspect-ratio: 1/1;
+    }
+
+    &:focus{
+        cursor: text;
+        border: 1px solid var(--clr-primary-900);
+        background-color: var(--clr-primary-900);
+        color: var(--clr-primary-100);
+        outline: none;
+        width: 10rem;
+        aspect-ratio: unset;
+    }
+    
+}
+
+label{
+    display: grid;
+    width: 100%;
+    gap: 0.5rem;
+    align-content: center;
+    align-items: center;
+    height: clamp(min-content, var(--input-height), 100%);
+
+    &:has(input[type="hidden"], select[type="hidden"], textarea[type="hidden"]){
+        display: none;
+    }
+}
+label.small{
+    gap: 0.25rem;
+    & > span{
+        font-size: var(--fs-100);
+        line-height: var(--fs-100);
+    }
+}
+
+label.toggle{
+    background-color: transparent;
+    padding: 0.25rem 0.5rem;
+    border-radius: var(--br-default);
+    cursor: pointer;
+    &:has(input:checked) span{
+        color: var(--bg-input);
+        background-color: transparent;
+        font-variation-settings: 'FILL' 1;
+    }
+    &:hover span{
+        color: var(--bg-input);
+    }
+
+    & input{
+        display:none;
+    }
+}
+
+.select{
+    display: grid;
+    grid-template-areas: "select";
+    width: fit-content;
+    min-width: 5rem;
+    max-width: 20rem;
+    border: 1px solid var(--bg-input-hover);
+    border-radius: var(--br-input);
+    padding: 0.25rem 0.5rem;
+    cursor: pointer;
+    background-color: var(--bg-input);
+    
+    &::after{
+        grid-area: select;
+        align-self: center;
+        justify-self: end;
+        content:"";
+        border-top: 0.5rem solid var(--clr-neutral-900);
+        width: 0;
+        height: 0;
+        border-left: 0.5rem solid transparent;
+        border-right: 0.5rem solid transparent;
+    }
+    
+    &:hover{
+        background-color: var(--bg-input-hover);
+    }
+
+    select{
+        min-width: max-content;
+        grid-area:select;
+        appearance: none;
+        background-color: transparent;
+        border:none;
+        padding: 0;
+        margin: 0;
+        padding-right: 1.5rem;
+        cursor: inherit;
+
+        & > option{
+            background: var(--clr-neutral-200);
+            &:hover{
+                background-color: var(--neutral-300);
+            }
+        }
+    }
+
+    &:has(select[disabled]){
+        &::after{
+            display: none;
+        }
+        cursor: not-allowed;
+        &:hover{
+            background-color: var(--bg-input);
+        }
+    }
+}

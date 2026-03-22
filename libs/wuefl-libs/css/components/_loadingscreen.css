@@ -1,0 +1,85 @@
+.loading{
+    &:before, &:after {
+        content: none;
+        display: none;
+    }
+
+    &[data-loading] {
+        overflow: hidden;
+        position: relative;
+        
+        &:before {
+            content: "";
+            position: fixed;
+            display: block; 
+            inset: 0;
+            background-color: hsl(from var(--clr-neutral-200) h s l / 0.8);
+            z-index: 100000;
+            
+            /* Pulsieren-Animation */
+            animation: pulseBG 4s infinite ease-in-out;
+            backdrop-filter: blur(1px); /* Schicker Milchglas-Effekt */
+        }
+
+        &:after {
+            content: "";
+            display:block;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: var(--clr-primary-500);
+            border-radius: 50%;
+            z-index: 100001;
+
+            box-shadow: 
+                25px -15px 0 var(--clr-primary-400),
+                -20px 20px 0 var(--clr-info-500),
+                15px 30px 0 var(--clr-primary-600),
+                -30px -20px 0 var(--clr-info-400);
+
+
+            /* Zwei Animationen gleichzeitig: 
+            1. orbit: Drehung um die Mitte
+            2. wobble: Veränderung des Abstands (Radius)
+            */
+            animation: 
+                orbit 4s infinite linear,
+                wobble 2.3s infinite ease-in-out alternate,
+                morph 2.1s infinite ease-in-out alternate;
+        }
+    }
+}
+
+/* Die Drehung */
+@keyframes orbit {
+    from { transform: rotate(0deg) translateX(40px) rotate(0deg); }
+    to   { transform: rotate(360deg) translateX(40px) rotate(-360deg); }
+}
+
+/* Das "Eiern" (Radius verändern) */
+@keyframes wobble {
+    0% { margin-top: 10px; margin-left: 0px; }
+    50% { margin-top: 0px; margin-left: 0px; }
+    100% { margin-top: 10px; margin-left: 0px; }
+}
+/* Pulsieren der Schatten (Punkte bewegen sich zueinander) */
+@keyframes morph {
+    0% { box-shadow: 25px -15px 0 var(--clr-primary-400), 
+        -20px 20px 0 var(--clr-primary-500), 
+        15px 30px 0 var(--clr-primary-600), 
+        -30px -20px 0 var(--clr-primary-300); 
+    }
+    100% { box-shadow: 
+        10px -5px -5px var(--clr-primary-400),
+        -10px 10px 0 var(--clr-primary-500),
+        5px 15px 0 var(--clr-primary-600),
+        -15px -10px 0 var(--clr-primary-300); 
+    }
+}
+
+@keyframes pulseBG {
+    0%, 100% { opacity: 1;}
+    50% { opacity: 0.9; }
+}

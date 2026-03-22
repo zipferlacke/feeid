@@ -1,0 +1,36 @@
+.vertical{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 1rem;
+    height: 100%;
+    overflow-y: auto;
+    scrollbar-width: thin;
+
+   &[align="space"]{
+        align-content: space-between;
+    }
+
+    &[align="center"]{
+        align-content: center;
+        align-items: center;
+    }
+}
+
+.horizontal{
+    display: flex;
+    scrollbar-width: none;
+    overflow-x: auto;
+    align-content: center;
+    align-items: center;
+    gap: 1rem;
+
+    &[align="space"]{
+        justify-content: space-between;
+    }
+
+    &[align="center"]{
+        justify-content: center;
+        justify-items: center;
+    }
+}

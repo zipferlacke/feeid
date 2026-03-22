@@ -1,0 +1,37 @@
+.nav{
+    justify-self: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    max-width: var(--width-normal);
+    margin: 0 auto;
+}
+
+.nav a{
+    display:table-cell;
+    padding: 0.3rem 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.nav a:hover, a:focus, .nav a[active]{
+    color: var(--clr-nav-accent);
+}
+
+.sidenav{
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.sidenav a{
+    display: block;
+    padding: 0.5rem;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.sidenav a:hover, a:focus{
+    color: var(--clr-nav-accent);
+}

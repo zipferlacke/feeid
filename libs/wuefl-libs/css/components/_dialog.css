@@ -1,0 +1,66 @@
+.dialog{
+    z-index: 1000;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    border: none;
+    max-width: min(800px, 80vw);
+    width: max-content;
+    max-height: 90dvh;
+    padding: 1rem;
+    border-radius: 1rem;
+    position: fixed;
+    
+    background-color: var(--clr-neutral-50);
+    box-shadow: 0 0 2rem var(--clr-neutral-800);
+
+    &::backdrop{
+        background-color: color-mix(in hsl, var(--clr-neutral-50) 50%, transparent);
+    }
+
+    @media screen and (max-width:700px) {
+        max-width: 90vw;
+        width: 90vw;
+    }
+}
+
+.dialog form{
+    
+    .loader{
+        &::before{
+            content: "";
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+
+            width: 10rem;
+            height: 10rem;
+            aspect-ratio: 1/1;
+
+            border: 16px solid var(--clr-neutral-100); /* Light grey */
+            border-top: 16px solid #3498db; /* Blue */
+            border-radius: 50%;
+
+            animation: spin 2s linear infinite;
+        }
+        
+        z-index:5;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width:100%;
+        height: 100%;
+        background-color: color-mix(in hsl, var(--clr-neutral-50) 50%, transparent);
+        overflow: auto;
+    }
+}
+
+@keyframes spin {
+    0% { transform: translate(-50%, -50%) rotate(0deg)}
+    25% { transform: translate(-50%, -50%) rotate(120deg)}
+    50% { transform: translate(-50%, -50%) rotate(180deg)}
+    75% { transform: translate(-50%, -50%) rotate(260deg)}
+    100% { transform: translate(-50%, -50%) rotate(360deg)}
+}

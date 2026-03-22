@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Profile – Feeid</title>
+  <link rel="manifest" href="./manifest.json">
+  <meta name="theme-color" content="#7c3aed">
+  <link rel="stylesheet" href="./css/controll.css">
+  <link rel="stylesheet" href="./css/feeid.css">
+</head>
+<body>
+
+<div id="app">
+  <feeid-header></feeid-header>
+  <feeid-sidebar page="profiles"></feeid-sidebar>
+
+  <main id="feeid-main"></main>
+
+  <feeid-reader></feeid-reader>
+</div>
+
+<script type="module" src="./js/profiles.js"></script>
+<script>
+  if ('serviceWorker' in navigator) navigator.serviceWorker.register('./service-worker.js', { scope: '/feeid/' });
+</script>
+</body>
+</html>

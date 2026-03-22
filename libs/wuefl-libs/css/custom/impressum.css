@@ -1,0 +1,12 @@
+body{
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-width: 1000px;
+    pad: 1rem 5%;
+    margin: 0 auto;
+
+    .strong{
+        font-weight: bold;
+    }
+}
